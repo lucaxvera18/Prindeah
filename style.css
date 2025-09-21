@@ -1,0 +1,185 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #FFDE00;
+    font-family: sans-serif;
+}
+
+#sunflower-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#carla-name {
+    position: absolute;
+    top: 5%;
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    color: #ffffff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    z-index: 20;
+    margin: 0;
+}
+
+#main-sunflower {
+    width: 150px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: pulse 2s infinite ease-in-out;
+    border-radius: 50%;
+    box-shadow: 0 0 0 rgba(255, 255, 0, 0);
+    z-index: 15;
+}
+
+#main-sunflower:hover {
+    transform: scale(1.1);
+}
+
+#main-sunflower.shine {
+    animation: shineEffect 0.5s forwards;
+}
+
+@keyframes shineEffect {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 0, 0);
+    }
+    50% {
+        box-shadow: 0 0 40px 10px rgba(255, 255, 0, 0.8),
+                    0 0 80px 20px rgba(255, 255, 200, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 0, 0);
+    }
+}
+
+.falling-sunflower {
+    position: absolute;
+    top: -100px;
+    width: 50px;
+    height: auto;
+    animation: fall 5s linear forwards;
+    z-index: 12;
+}
+
+@keyframes fall {
+    to {
+        top: 110%;
+        transform: rotate(720deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.butterfly {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-image: url('mariposa.PNG');
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: floatAndWander 15s infinite ease-in-out;
+    z-index: 10;
+}
+
+@keyframes floatAndWander {
+    0% {
+        transform: translate(0, 0) scaleX(1);
+        left: 10%;
+        top: 20%;
+    }
+    25% {
+        transform: translate(30vw, 15vh) scaleX(1);
+        left: 40%;
+        top: 35%;
+    }
+    50% {
+        transform: translate(50vw, -10vh) scaleX(-1);
+        left: 60%;
+        top: 10%;
+    }
+    75% {
+        transform: translate(20vw, 5vh) scaleX(-1);
+        left: 30%;
+        top: 25%;
+    }
+    100% {
+        transform: translate(0, 0) scaleX(1);
+        left: 10%;
+        top: 20%;
+    }
+}
+
+#fireflies-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.firefly {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: #FFFFAA;
+    border-radius: 50%;
+    opacity: 0;
+    box-shadow: 0 0 10px 3px #FFFF88;
+    animation: glowAndMove 15s infinite ease-in-out;
+}
+
+@keyframes glowAndMove {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0.8);
+    }
+    25% {
+        opacity: 0.8;
+        transform: translate(20vw, 15vh) scale(1.2);
+    }
+    50% {
+        opacity: 0.4;
+        transform: translate(40vw, -10vh) scale(0.9);
+    }
+    75% {
+        opacity: 0.9;
+        transform: translate(60vw, 20vh) scale(1.1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(80vw, -5vh) scale(0.7);
+    }
+}
+
+@media (max-width: 600px) {
+    #carla-name {
+        font-size: 2rem;
+        top: 3%;
+    }
+    #main-sunflower {
+        width: 120px;
+    }
+    .firefly {
+        width: 6px;
+        height: 6px;
+    }
+}
